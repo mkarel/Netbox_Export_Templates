@@ -1,4 +1,4 @@
-This is a Netbox Export Template that exports device information and includes the RU Height. I created this report to assist in rack space planing for a Datacenter migration Project. 
+This is a Netbox Export Template that exports device information and includes the RU Height. I created this report to assist in rack space planning for a Datacenter migration Project. 
 ## Template Code ##
 Name,Status,Role,Site,Location,Rack,Device Height,Manufacturer,Model,Serial,Parent Device,Device Bay,Tags
 {%- for device in queryset %}
