@@ -1,0 +1,11 @@
+This is a Netbox Export Template that exports device information and includes the RU Height. I created this report to assist in rack space planing for a Datacenter migration Project. 
+## Template Code ##
+Name,Status,Role,Site,Location,Rack,Device Height,Manufacturer,Model,Serial,Parent Device,Device Bay,Tags
+{%- for device in queryset %}
+"{{ device.name }}","{{ device.status }}","{{ device.device_role }}","{{ device.site}}","{{ device.location}}","{{ device.rack}}","{{ device.device_type.u_height }}","{{ device.device_type.manufacturer}}","{{ device.device_type }}","{{ device.serial }}"
+{%- if device.parent_bay -%}
+,"{{ device.parent_bay.device.name }}","{{ device.parent_bay }}"
+{%- else -%}
+,"",""
+{%- endif -%}
+,"{{ device.tags.names() | join(", ") }}"{% endfor %}
